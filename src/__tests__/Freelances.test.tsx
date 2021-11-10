@@ -1,8 +1,8 @@
+import { screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
 import { rest } from 'msw'
 import { setupServer } from 'msw/node'
-import { render, waitFor, screen, waitForElementToBeRemoved } from '@testing-library/react'
-import { ThemeProvider } from '../utils/context'
 import Freelances from '../pages/Freelances'
+import { render } from '../utils/test'
 
 const freelancersMockedData = [
   {
@@ -34,11 +34,7 @@ afterAll(() => server.close())
 
 describe('Freelances component', () => {
   it('should display freelancers names', async () => {
-    render(
-      <ThemeProvider>
-        <Freelances />
-      </ThemeProvider>
-    )
+    render(<Freelances />)
     await waitForElementToBeRemoved(() => screen.getByTestId('loader'))
     await waitFor(() => {
       expect(screen.getByText('Harry Potter')).toBeTruthy()

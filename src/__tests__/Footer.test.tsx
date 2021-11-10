@@ -1,14 +1,10 @@
-import { fireEvent, render, screen } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import Footer from '../components/Footer'
-import { ThemeProvider } from '../utils/context'
+import { render } from '../utils/test'
 
 describe('Footer component', () => {
   it('should render without crash', async () => {
-    render(
-      <ThemeProvider>
-        <Footer />
-      </ThemeProvider>
-    )
+    render(<Footer />)
     const nightModeButton = screen.getByRole('button')
     expect(nightModeButton.textContent).toBe('Changer de mode : ☀️')
     fireEvent.click(nightModeButton)

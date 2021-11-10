@@ -1,17 +1,10 @@
-import { render, screen } from '@testing-library/react'
-import { MemoryRouter } from 'react-router-dom'
+import { screen } from '@testing-library/react'
 import Home from '../pages/Home'
-import { ThemeProvider } from '../utils/context'
+import { render } from '../utils/test'
 
 describe('Home component', () => {
   it('should render title', () => {
-    render(
-      <MemoryRouter>
-        <ThemeProvider>
-          <Home />
-        </ThemeProvider>
-      </MemoryRouter>
-    )
+    render(<Home />)
     // screen.debug() to display what is rendered
     expect(
       screen.getByRole('heading', {
