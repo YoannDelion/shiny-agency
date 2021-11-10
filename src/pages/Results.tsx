@@ -63,6 +63,13 @@ function formatFetchParams(answers: any) {
   }, '')
 }
 
+export function formatJobList(title: string, listLength: number, index: number) {
+  if (index === listLength - 1) {
+    return title
+  }
+  return `${title},`
+}
+
 export default function Results() {
   const { theme } = useTheme()
   const { answers } = useContext(SurveyContext)
@@ -87,8 +94,7 @@ export default function Results() {
         {resultsData &&
           resultsData.map((result: any, index: any) => (
             <JobTitle key={`result-title-${index}-${result.title}`} theme={theme}>
-              {result.title}
-              {index === resultsData.length - 1 ? '' : ','}
+              {formatJobList(result.title, resultsData.length, index)}
             </JobTitle>
           ))}
       </ResultsTitle>
