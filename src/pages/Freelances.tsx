@@ -53,7 +53,7 @@ export default function Freelances() {
       </PageSubtitle>
       {loading ? (
         <LoaderWrapper>
-          <Loader theme={theme} />
+          <Loader theme={theme} data-testid='loader' />
         </LoaderWrapper>
       ) : (
         <CardsContainer>
