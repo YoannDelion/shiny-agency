@@ -9,7 +9,7 @@ describe('Footer component', () => {
         <Footer />
       </ThemeProvider>
     )
-    const nightModeButton = screen.getByRole('buttontest')
+    const nightModeButton = screen.getByRole('button')
     expect(nightModeButton.textContent).toBe('Changer de mode : ☀️')
     fireEvent.click(nightModeButton)
     expect(nightModeButton.textContent).toBe('Changer de mode : 🌙')
