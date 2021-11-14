@@ -78,14 +78,14 @@ export default function Results() {
   const { data, loading, error } = useFetch(`http://localhost:8000/results?${fetchParams}`)
 
   if (error) {
-    return <span>Il y a un problème</span>
+    return <span data-testid='error'>{error}</span>
   }
 
   const resultsData = data?.resultsData
 
   return loading ? (
     <LoaderWrapper>
-      <Loader />
+      <Loader data-testid='loader' />
     </LoaderWrapper>
   ) : (
     <ResultsContainer theme={theme}>
